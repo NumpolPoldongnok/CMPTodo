@@ -32,34 +32,26 @@ fun TodoListScreenRoot(
 
     // Use PageView component
     TodoListScreen(
-        todoList = state.todoList,
-        completeList = state.completeList,
-        selectedTabIndex = state.selectedTabIndex,
-        onTodoClick = onTodoClick,
-        onCheckedChange = viewModel::onCheckedChange,
-        onTabSelected = viewModel::onTabSelected
+        state = state,
+        action = viewModel::onAction
     )
 }
 
 @Composable
 fun TodoListScreen(
-    todoList: List<TodoItem>,
-    completeList: List<TodoItem>,
-    selectedTabIndex: Int,
-    onTodoClick: (TodoItem) -> Unit,
-    onCheckedChange: (TodoItem) -> Unit,
-    onTabSelected: (Int) -> Unit,
+    state: TodoListState,
+    action: (TodoListAction) -> Unit
 ) {
     val pagerState = rememberPagerState { 2 }
     val todoListState = rememberLazyListState()
     val completeListState = rememberLazyListState()
 
-    LaunchedEffect(selectedTabIndex) {
-        pagerState.animateScrollToPage(selectedTabIndex)
+    LaunchedEffect(state.selectedTabIndex) {
+        pagerState.animateScrollToPage(state.selectedTabIndex)
     }
 
     LaunchedEffect(pagerState.currentPage) {
-        onTabSelected(pagerState.currentPage)
+        action(TodoListAction.OnTabSelected(pagerState.currentPage))
     }
 
     PageView(
@@ -67,15 +59,15 @@ fun TodoListScreen(
             stringResource(Res.string.tab_todo_list),
             stringResource(Res.string.tab_complete_list)
         ),
-        selectedTabIndex = selectedTabIndex,
+        selectedTabIndex = state.selectedTabIndex,
         pagerState = pagerState,
         tabContainerColor = DesertWhite,
         tabIndicatorColor = SandYellow,
-        onTabSelected = onTabSelected
+        onTabSelected = { action(TodoListAction.OnTabSelected(it)) }
     ) { pageIndex ->
         when (pageIndex) {
             0 -> {
-                if (todoList.isEmpty()) {
+                if (state.todoList.isEmpty()) {
                     Text(
                         text = stringResource(Res.string.no_todo_list),
                         textAlign = TextAlign.Center,
@@ -83,9 +75,9 @@ fun TodoListScreen(
                     )
                 } else {
                     TodoListView(
-                        todoList = todoList,
-                        onTodoClick = onTodoClick,
-                        onCheckedChange = onCheckedChange,
+                        todoList = state.todoList,
+                        onTodoClick = { action(TodoListAction.OnTodoClick(it)) },
+                        onCheckedChange = { action(TodoListAction.OnCheckedChange(it)) },
                         modifier = Modifier.fillMaxSize(),
                         scrollState = todoListState
                     )
@@ -93,7 +85,7 @@ fun TodoListScreen(
             }
 
             1 -> {
-                if (completeList.isEmpty()) {
+                if (state.completeList.isEmpty()) {
                     Text(
                         text = stringResource(Res.string.no_complete_list),
                         textAlign = TextAlign.Center,
@@ -101,9 +93,9 @@ fun TodoListScreen(
                     )
                 } else {
                     TodoListView(
-                        todoList = completeList,
-                        onTodoClick = onTodoClick,
-                        onCheckedChange = onCheckedChange,
+                        todoList = state.completeList,
+                        onTodoClick = { action(TodoListAction.OnTodoClick(it)) },
+                        onCheckedChange = { action(TodoListAction.OnCheckedChange(it)) },
                         modifier = Modifier.fillMaxSize(),
                         scrollState = completeListState
                     )

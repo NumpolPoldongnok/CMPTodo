@@ -20,7 +20,16 @@ class TodoListViewModel : ViewModel() {
         _state.update { it.copy(todoList = todoList) }
     }
 
-    fun onCheckedChange(todoItem: TodoItem) {
+    fun onAction(action: TodoListAction) {
+        when(action) {
+            is TodoListAction.OnTabSelected -> onTabSelected(action.index)
+            is TodoListAction.OnCheckedChange -> onCheckedChange(action.todoItem)
+            is TodoListAction.OnAddTodoClick -> TODO()
+            is TodoListAction.OnTodoClick -> TODO()
+        }
+    }
+
+    private fun onCheckedChange(todoItem: TodoItem) {
         _state.update { currentState ->
             if (todoItem.finished) {
                 moveItem(
@@ -40,7 +49,7 @@ class TodoListViewModel : ViewModel() {
         }
     }
 
-    fun onTabSelected(index: Int) {
+    private fun onTabSelected(index: Int) {
         _state.update { it.copy(selectedTabIndex = index) }
     }
 

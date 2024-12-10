@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.numpol.cmptodo.todo.domain.TodoItem
 import com.numpol.cmptodo.todo.presentation.todo_detail.TodoDetailScreen
 import com.numpol.cmptodo.todo.presentation.todo_list.TodoListScreen
+import com.numpol.cmptodo.todo.presentation.todo_list.TodoListState
 
 val todoItems: List<TodoItem> = (0..10).map {
     val value = it.toString()
@@ -26,11 +27,7 @@ fun PreviewTodoListScreen() {
     MaterialTheme {
         Surface {
             TodoListScreen(
-                todoList = todoItems,
-                completeList = todoItems,
-                selectedTabIndex = 0,
-                onTodoClick = { },
-                onCheckedChange = { }
+                state = TodoListState(todoList = todoItems)
             ) { }
         }
     }
