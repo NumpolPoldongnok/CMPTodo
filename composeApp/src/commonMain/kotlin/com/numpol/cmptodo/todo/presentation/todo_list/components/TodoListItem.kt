@@ -26,8 +26,8 @@ import com.numpol.cmptodo.todo.domain.TodoItem
 fun TodoListItem(
     todoItem: TodoItem,
     onClick: () -> Unit,
-    onCheckedChange: (Boolean) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCheckedChange: (Boolean) -> Unit
 ) {
     var isChecked by remember { mutableStateOf(todoItem.finished) }
 
