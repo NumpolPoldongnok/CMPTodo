@@ -27,9 +27,11 @@ fun PreviewTodoListScreen() {
         Surface {
             TodoListScreen(
                 todoList = todoItems,
+                completeList = todoItems,
+                selectedTabIndex = 0,
                 onTodoClick = { },
                 onCheckedChange = { }
-            )
+            ) { }
         }
     }
 }
