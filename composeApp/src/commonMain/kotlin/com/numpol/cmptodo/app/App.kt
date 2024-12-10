@@ -30,11 +30,9 @@ fun App() {
                 }
 
                 composable<Route.TodoDetail> { entry ->
-                    Text(entry.toString())
-//                    val args = entry.toRoute<Route.TodoDetail>()
-//                    val id = args.id
-//                    val todoItem = todoItems.find { it.id == id }.toString()
+                    //Text(entry.toString())
 
+                    SamplePageView()
                 }
             }
         }
