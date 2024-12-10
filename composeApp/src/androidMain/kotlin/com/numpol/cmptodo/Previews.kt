@@ -1,7 +1,8 @@
 package com.numpol.cmptodo
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.numpol.cmptodo.todo.domain.TodoItem
@@ -24,7 +25,11 @@ val todoItems: List<TodoItem> = (0..10).map {
 fun PreviewTodoListScreen() {
     MaterialTheme {
         Surface {
-            TodoListScreen(todoItems = todoItems) { }
+            TodoListScreen(
+                todoList = todoItems,
+                onTodoClick = { },
+                onCheckedChange = { }
+            )
         }
     }
 }

@@ -1,13 +1,13 @@
 package com.numpol.cmptodo.app
 
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
-import com.numpol.cmptodo.todo.presentation.todo_list.TodoListScreen
+import com.numpol.cmptodo.todo.presentation.todo_list.TodoListScreenRoot
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
@@ -24,9 +24,13 @@ fun App() {
                 startDestination = Route.TodoList
             ) {
                 composable<Route.TodoList> {
+                    TodoListScreenRoot(onTodoClick = {
+                        navController.navigate(Route.TodoDetail(it.id))
+                    })
                 }
 
                 composable<Route.TodoDetail> { entry ->
+                    Text(entry.toString())
 //                    val args = entry.toRoute<Route.TodoDetail>()
 //                    val id = args.id
 //                    val todoItem = todoItems.find { it.id == id }.toString()

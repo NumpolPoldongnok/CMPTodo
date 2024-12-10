@@ -6,4 +6,9 @@
     <string name="error_no_internet">Unable to connect to the server. Check your internet connection and try again.</string>
     <string name="error_too_many_requests">You've reached your request limit. Please wait a while before trying again.</string>
     <string name="error_serialization">There was an error processing the data. Please check the format and try again.</string>
+    <string name="todo_list_header">Todo List</string>
+    <string name="tab_todo_list">To-Do</string>
+    <string name="tab_complete_list">Completed</string>
+    <string name="no_todo_list">No todo list available</string>
+    <string name="no_complete_list">No complete list available</string>
 </resources>
