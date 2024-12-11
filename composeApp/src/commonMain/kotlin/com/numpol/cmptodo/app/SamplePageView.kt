@@ -14,11 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import cmptodo.composeapp.generated.resources.Res
-import cmptodo.composeapp.generated.resources.tab_complete_list
-import cmptodo.composeapp.generated.resources.tab_todo_list
 import com.numpol.cmptodo.todo.presentation.todo_list.components.PageView
-import org.jetbrains.compose.resources.stringResource
 
 
 @Composable

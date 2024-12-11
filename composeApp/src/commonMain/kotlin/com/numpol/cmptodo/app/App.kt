@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.numpol.cmptodo.todo.presentation.todo_list.TodoListScreenRoot
 import com.numpol.cmptodo.todo.presentation.todo_list.TodoListViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 
 
 @Composable
@@ -24,7 +25,7 @@ fun App() {
                 startDestination = Route.TodoList
             ) {
                 composable<Route.TodoList> {
-                    val viewModel = TodoListViewModel()
+                    val viewModel = koinViewModel<TodoListViewModel>()
                     TodoListScreenRoot(viewModel, onTodoClick = {
                         navController.navigate(Route.TodoDetail(it.id))
                     })
