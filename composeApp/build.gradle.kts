@@ -44,6 +44,16 @@ kotlin {
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
             implementation(libs.ktor.client.okhttp)
+
+            // Retrofit
+            implementation(libs.retrofit2.kotlinx.serialization.converter)
+            implementation(libs.retrofit)
+            implementation(libs.okhttp)
+            implementation(libs.coil.kt.coil.compose)
+            implementation(libs.kotlinx.serialization.json.v160)
+
+            // Coil
+            implementation(libs.coil.compose.v270)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
