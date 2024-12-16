@@ -14,21 +14,17 @@
  * limitations under the License.
  */
 
-package com.numpol.cmptodo.mars_photo.ui.theme
+package com.numpol.cmptodo.mars_photo.domain
 
-import androidx.compose.material3.Typography
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-// Set of Material typography styles to start with
-val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
+/**
+ * This data class defines a Mars photo which includes an ID, and the image URL.
+ */
+@Serializable
+data class MarsPhoto(
+    val id: String,
+    @SerialName(value = "img_src")
+    val imgSrc: String
 )

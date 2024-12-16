@@ -11,4 +11,10 @@
     <string name="tab_complete_list">Completed</string>
     <string name="no_todo_list">No todo list available</string>
     <string name="no_complete_list">No complete list available</string>
+
+    <string name="loading_failed">Failed to load</string>
+    <string name="retry">Retry</string>
+    <string name="loading">Loading</string>
+    <string name="placeholder_success">Placeholder text</string>
+    <string name="mars_photo">Mars photo</string>
 </resources>

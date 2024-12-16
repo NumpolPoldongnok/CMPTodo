@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-package com.numpol.cmptodo.mars_photo.model
+package com.numpol.cmptodo.mars_photo.data.network
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.numpol.cmptodo.core.domain.DataError
+import com.numpol.cmptodo.core.domain.Result
+import com.numpol.cmptodo.mars_photo.data.dto.MarsPhotoDto
 
-/**
- * This data class defines a Mars photo which includes an ID, and the image URL.
- */
-@Serializable
-data class MarsPhoto(
-    val id: String,
-    @SerialName(value = "img_src")
-    val imgSrc: String
-)
+
+interface MarsApiService {
+    suspend fun getPhotos(): Result<List<MarsPhotoDto>, DataError.Remote>
+}
